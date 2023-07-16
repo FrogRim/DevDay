@@ -80,7 +80,6 @@ public class GRollerAgent : Agent
 
     // 해당 함수는 코딩 혹은 직접적인 조작을 대비해서 만들어 놓은 예비 함수
 
-    /*
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var ContinuousActionsOut = actionsOut.ContinuousActions;
@@ -88,5 +87,5 @@ public class GRollerAgent : Agent
         ContinuousActionsOut[0] = Input.GetAxis("Horizontal");
         ContinuousActionsOut[1] = Input.GetAxis("Vertical");
     }
-    */
+    
 }

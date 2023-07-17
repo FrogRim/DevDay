@@ -54,6 +54,7 @@ public class GRollerAgent : Agent
 
     public float forceMultiplier = 10.0f;
 
+    public GameObject viewModel = null;
     public override void OnActionReceived(ActionBuffers actions)
     {
         Vector3 controlSignal = Vector3.zero;
@@ -61,6 +62,7 @@ public class GRollerAgent : Agent
         controlSignal.z = actions.ContinuousActions[1];
         rBody.AddForce(controlSignal * forceMultiplier);
 
+        viewModel.transform.LookAt(Target);
         //º¸»ó
         float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
 

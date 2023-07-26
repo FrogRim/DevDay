@@ -23,7 +23,7 @@ public class GRollerAgent : Agent
     {
         // 새로운 에피소드 시작시, 다시 에이전트의 포지션을 초기화
 
-        if (this.transform.localPosition.y < 0) // 바닥 밑으로 떨어졌을 경우
+        if (this.transform.localPosition.y < -0.25) // 바닥 밑으로 떨어졌을 경우
         {
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.velocity = Vector3.zero;
@@ -32,7 +32,7 @@ public class GRollerAgent : Agent
         }
 
         //타겟의 위치는 에피소드 시작시 랜덤하게 변경시키기
-        Target.localPosition = new Vector3(Random.value * 8 - 4, 0.5f, Random.value * 8 - 4);
+        Target.localPosition = new Vector3(Random.value * 10 - 4, 0.5f, Random.value * 10 - 4);
         
     }
 
@@ -74,7 +74,7 @@ public class GRollerAgent : Agent
         }
 
         //바닥 밑으로 떨어지면 학습종료
-        else if (this.transform.localPosition.y < 0)
+        else if (this.transform.localPosition.y < -0.25)
         {
             EndEpisode();
         }

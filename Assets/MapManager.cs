@@ -9,14 +9,14 @@ public class MapManager : MonoBehaviour
     public RawImage mapRawImage;
 
     [Header("맵 정보 입력")]
-    public string strBaseURL = "";
-    public string latitude = "";
-    public string longitude = "";
-    public int level = 14;
-    public int mapWidth;
-    public int mapHeight;
-    public string strAPIKey = "";
-    public string secretKey = "";
+    public string strBaseURL = ""; 
+    public string latitude = ""; // 위도
+    public string longitude = ""; // 경도
+    public int level = 14; // 지도의 확대 및 축소
+    public int mapWidth; // 가로길이
+    public int mapHeight; // 세로길이
+    public string strAPIKey = ""; // 네이버 API 공개키
+    public string secretKey = ""; // 네이버 API 비밀키
 
 
     // Start is called before the first frame update

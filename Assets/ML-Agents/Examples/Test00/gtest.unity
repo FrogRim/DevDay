@@ -432,6 +432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 959443855}
+  - component: {fileID: 959443856}
   - component: {fileID: 959443854}
   - component: {fileID: 959443853}
   m_Layer: 0
@@ -499,14 +500,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959443852}
-  m_LocalRotation: {x: 0, y: 0.7148999, z: -0.6992268, w: 0}
-  m_LocalPosition: {x: 0.1891371, y: 12.319507, z: 1.1858988}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 2.9982316, y: 20, z: 2.4114845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 88.73, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &959443856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959443852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3317e9e7dad0c541ba27614fc5a7660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1116713893}
+  offset: {x: 0, y: 20, z: 0}
+  smoothSpeed: 0.125
 --- !u!1 &1116713892
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +613,7 @@ MonoBehaviour:
     VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: efa70eac3bb7e2d4ab1f5270d0aab414, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 26724ee2d8327cb45973ccd170718fc1, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: My Behavior
@@ -872,8 +888,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545410874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0025000572, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 414551254}
@@ -913,7 +929,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88b9ae7af2c1748a0a1f63407587a601, type: 2}
+  - {fileID: 2100000, guid: bbb71e91b4d8a44999b1f690a488dc5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1025,9 +1041,9 @@ MonoBehaviour:
   strBaseURL: https://naveropenapi.apigw.ntruss.com/map-static/v2/raster
   latitude: 36.3504119
   longitude: 127.3845474
-  level: 10
-  mapWidth: 1000
-  mapHeight: 1000
+  level: 16
+  mapWidth: 100
+  mapHeight: 100
   strAPIKey: 40my2phyl2
   secretKey: ZzV7RJZv8MwKhO8hmYvbxl5xKfeojfhUOTKYhAkc
 --- !u!222 &1680012667

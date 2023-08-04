@@ -17,7 +17,7 @@ public class MapManager : MonoBehaviour
     public int mapHeight; // 세로길이
     public string strAPIKey = ""; // 네이버 API 공개키
     public string secretKey = ""; // 네이버 API 비밀키
-
+    
 
     // Start is called before the first frame update
     void Start()

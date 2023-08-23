@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - wall
+  - agent
+  - Target
+  - goal
+  - Obsstacles
   layers:
   - Default
   - TransparentFX

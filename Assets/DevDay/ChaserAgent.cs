@@ -5,17 +5,17 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
-//mlAgent »ç¿ë½Ã Æ÷ÇÔÇØ¾ß µÊ
+//mlAgent ì‚¬ìš©ì‹œ í¬í•¨í•´ì•¼ ë¨
 
 public class ChaserAgent : Agent
 {
     
     Rigidbody rBody;
     public GameObject Target;
-    private float stillThreshold = 1f; // ¿òÁ÷ÀÓ °¨Áö ÀÓ°è°ª
+    private float stillThreshold = 1f; // ì›€ì§ì„ ê°ì§€ ì„ê³„ê°’
     private Vector3 initialPosition;
-    public float catchDistance = 1f; // ¼ú·¡°¡ µµ¸ÁÀÚ¸¦ ÀâÀ» ¼ö ÀÖ´Â °Å¸®
-    public float turnSpeed = 180f; // ¿¡ÀÌÀüÆ®ÀÇ È¸Àü ¼Óµµ
+    public float catchDistance = 1f; // ìˆ ë˜ê°€ ë„ë§ìë¥¼ ì¡ì„ ìˆ˜ ìˆëŠ” ê±°ë¦¬
+    public float turnSpeed = 180f; // ì—ì´ì „íŠ¸ì˜ íšŒì „ ì†ë„
 
     public GameObject viewModel = null;
     
@@ -29,10 +29,10 @@ public class ChaserAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        //»õ·Î¿î ¾ÖÇÇ¼Òµå ½ÃÀÛ½Ã, ´Ù½Ã ¿¡ÀÌÀüÆ®ÀÇ Æ÷Áö¼ÇÀÇ ÃÊ±âÈ­
+        //ìƒˆë¡œìš´ ì• í”¼ì†Œë“œ ì‹œì‘ì‹œ, ë‹¤ì‹œ ì—ì´ì „íŠ¸ì˜ í¬ì§€ì…˜ì˜ ì´ˆê¸°í™”
         this.transform.localPosition = initialPosition;
         // If the Agent fell, zero its momentum
-        if (this.transform.localPosition.y < 0) //¸¸¾à ¿¡ÀÌÀüÆ®°¡ floor ¾Æ·¡·Î ¶³¾îÁø °æ¿ì Ãß°¡ ÃÊ±âÈ­
+        if (this.transform.localPosition.y < 0) //ë§Œì•½ ì—ì´ì „íŠ¸ê°€ floor ì•„ë˜ë¡œ ë–¨ì–´ì§„ ê²½ìš° ì¶”ê°€ ì´ˆê¸°í™”
         {
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.velocity = Vector3.zero;
@@ -43,13 +43,13 @@ public class ChaserAgent : Agent
     }
 
     /// <summary>
-    /// °­È­ÇĞ½ÀÀ» À§ÇÑ, °­È­ÇĞ½ÀÀ» ÅëÇÑ Çàµ¿ÀÌ °áÁ¤µÇ´Â °÷
+    /// ê°•í™”í•™ìŠµì„ ìœ„í•œ, ê°•í™”í•™ìŠµì„ í†µí•œ í–‰ë™ì´ ê²°ì •ë˜ëŠ” ê³³
     /// </summary>
     public float forceMultiplier = 10;
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // ¿¡ÀÌÀüÆ®°¡ ¸ñÇ¥¹°ÀÇ »ó´ëÀûÀÎ À§Ä¡¿Í ¹æÇâÀ» °üÃøÇÕ´Ï´Ù.
+        // ì—ì´ì „íŠ¸ê°€ ëª©í‘œë¬¼ì˜ ìƒëŒ€ì ì¸ ìœ„ì¹˜ì™€ ë°©í–¥ì„ ê´€ì¸¡í•©ë‹ˆë‹¤.
         Vector3 relativePosition = Target.transform.localPosition - transform.localPosition;
         sensor.AddObservation(relativePosition.normalized);
         sensor.AddObservation(Vector3.Dot(transform.forward, relativePosition.normalized));
@@ -62,17 +62,17 @@ public class ChaserAgent : Agent
         
         MoveAgent(actionBuffers);
 
-        // ¿¡ÀÌÀüÆ®°¡ ¸ñÇ¥¹°°úÀÇ °Å¸®¿¡ µû¶ó º¸»óÀÌ³ª ¹úÁ¡À» ¹Ş½À´Ï´Ù.
+        // ì—ì´ì „íŠ¸ê°€ ëª©í‘œë¬¼ê³¼ì˜ ê±°ë¦¬ì— ë”°ë¼ ë³´ìƒì´ë‚˜ ë²Œì ì„ ë°›ìŠµë‹ˆë‹¤.
         float distance = Vector3.Distance(transform.position, Target.transform.position);
         if (distance < catchDistance)
         {
-            // ¿¡ÀÌÀüÆ®°¡ ¸ñÇ¥¹°À» ÀâÀ¸¸é ÃÖ´ë º¸»óÀ» ¹Ş°í ¿¡ÇÇ¼Òµå¸¦ Á¾·áÇÕ´Ï´Ù.
+            // ì—ì´ì „íŠ¸ê°€ ëª©í‘œë¬¼ì„ ì¡ìœ¼ë©´ ìµœëŒ€ ë³´ìƒì„ ë°›ê³  ì—í”¼ì†Œë“œë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤.
             SetReward(1.0f);
             EndEpisode();
         }
         else
         {
-            // ¿¡ÀÌÀüÆ®°¡ ¸ñÇ¥¹°°ú ¸Ö¾îÁú¼ö·Ï ¹úÁ¡À» ¹Ş½À´Ï´Ù.
+            // ì—ì´ì „íŠ¸ê°€ ëª©í‘œë¬¼ê³¼ ê°€ê¹Œì›Œ ì§ˆìˆ˜ë¡ ìƒì ì„ ë°›ìŠµë‹ˆë‹¤
             SetReward(0.01f * (1 / distance));
         }
         
@@ -84,7 +84,7 @@ public class ChaserAgent : Agent
     {
         if (collision.collider.tag == "Obsstacles" && collision.gameObject.GetComponent<BoxCollider>() != null)
         {
-            // "Obsstacles" ÅÂ±×¸¦ °¡Áö°í ÀÖ°í, BoxCollider ÄÄÆ÷³ÍÆ®¸¦ °¡Áø GameObject¿¡ Ãæµ¹ÇÑ °æ¿ì           
+            // "Obsstacles" íƒœê·¸ë¥¼ ê°€ì§€ê³  ìˆê³ , BoxCollider ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì§„ GameObjectì— ì¶©ëŒí•œ ê²½ìš°           
             SetReward(-0.05f);
         }
 
@@ -95,7 +95,7 @@ public class ChaserAgent : Agent
 
     public void MoveAgent(ActionBuffers actionBuffers)
     {
-        // ¿¡ÀÌÀüÆ®´Â ¾ÕµÚÁÂ¿ì·Î ¿òÁ÷ÀÌ°Å³ª È¸ÀüÇÏ´Â Çàµ¿À» ÇÕ´Ï´Ù.
+        // ì—ì´ì „íŠ¸ëŠ” ì•ë’¤ì¢Œìš°ë¡œ ì›€ì§ì´ê±°ë‚˜ íšŒì „í•˜ëŠ” í–‰ë™ì„ í•©ë‹ˆë‹¤.
         Vector3 forwardAmount = transform.forward * actionBuffers.ContinuousActions[0];
         Vector3 rightAmount = transform.right * actionBuffers.ContinuousActions[1];
         //float turnAmount = actionBuffers.ContinuousActions[2];

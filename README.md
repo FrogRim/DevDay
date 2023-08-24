@@ -1,5 +1,5 @@
 # 강화학습을 이용한 최적의 목표 추적 시스템 구현
-유니티 ML-Agents와 파이썬 tensorFlow를 이용한 강화학습 구
+유니티 ML-Agents와 파이썬 tensorFlow를 이용한 강화학습 구현
 
 
 ## 🖥️ 프로젝트 소개

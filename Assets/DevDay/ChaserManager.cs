@@ -8,15 +8,19 @@ public class ChaserManager : MonoBehaviour
 
     public void EndEpisode(int num)
     {
+        
         foreach (var agent in agentList)
         {
+            // 목표물이 도망에 성공했을 때
             if (num == 0)
             {
-                agent.SetReward(-0.06f);
+                agent.AddReward(0.1f);
             }
+
+            // 추격자가 체포에 성공했을 떼
             else if (num == 1)
             {
-                agent.SetReward(15f);
+                agent.AddReward(-0.5f);
             }
             else
             {
